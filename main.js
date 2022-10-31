@@ -84,11 +84,15 @@ async function getCode(){
 }
 
 async function getCityCoords(city, country){
+    
     try{
         const response = await fetch (`https://nominatim.openstreetmap.org/search.php?city=${city}&country=${country}&format=jsonv2`);
         if (response.ok){
             const jsonResponse = await response.json()
             cityInfo = jsonResponse
+            if (cityInfo.length === 0){
+                window.alert('your city doesnt exist')
+            }
             console.log(cityInfo)
             let lat = cityInfo[0]['lat']
             let long = cityInfo[0]['lon']
