@@ -1,0 +1,235 @@
+body{
+    margin: 0;
+    padding: 45px;
+    font-size: 13px;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #B4D7FE;
+}
+
+.main{
+    display: flex;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: -15px 21px 15px -3px rgba(0,0,0,0.1);
+}
+
+.weather{
+    background-color: #5C9CE5;
+    height: 620px;
+    width: 20%;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.dashboard{
+    background-color: #E4F1FF;
+    height: 620px;
+    width: 80%;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input#site-search-city, input#site-search-country {
+    color: #f0ffff;
+    border-radius: 43px;
+    border: none;
+    padding: 4px;
+    background-color: #0000;
+    width: 50%;
+}
+
+
+
+
+input#site-search-city::placeholder,input#site-search-country::placeholder{
+    color: white;
+    font-size: 13px;
+    font: 500;
+}
+
+.searchInput {
+    border: 3px solid #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: transparent;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+
+
+.fa-magnifying-glass{
+    color: white;
+    padding: 3px 2px;
+}
+
+.buttons{
+    display: flex;
+}
+
+.buttons button{
+    background-color:  transparent;
+    color: white;
+    margin: 5px 20px;
+    border: 2px solid #fff;
+    padding: 4px 15px 4px 15px;
+    transition-duration: 0.4s;
+}
+
+.buttons button:hover{
+    background-color: #FFF;
+    color: #5C9CE5;
+}
+
+.nextHours{
+    width: 90%;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: -7px 14px 15px -21px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+    margin: 10px
+
+}
+
+.dashboard h3{
+    color: #424343;
+    padding: 5px;
+}
+
+.moreDetails{
+    display: flex;
+    width: 100%;
+    height: 210px;
+    justify-content: center;
+}
+
+.more{
+    background-color: #FFF;
+    border-radius: 20px;
+    width: 250px;
+    height: 120px;
+    margin: 10px 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.more h3{
+    padding: 0;
+}
+
+.searchCity {
+    margin-bottom: 20px;
+}
+
+.degrees h2{
+    font-size: 60px ;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    margin: unset;
+}
+
+.weatherState h3{
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    padding: 0px;
+    margin: 0px 0px 0px 4px;
+}
+
+.weatherState{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    padding: 3px;
+}
+
+.weatherState i{
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+.dateDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.currentDay h5{
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.nextHours{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inNextHours{
+    margin: 10px 0px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-sun{
+    color: #F9DC5C;
+}
+
+.fa-cloud{
+    color: #CED4DA;
+}
+
+.fa-temperature-low{
+    color: #CED4DA;
+}
+
+.fa-cloud-rain{
+    color:#90E0EF;
+}
+.fa-cloud-showers-heavy{
+    color:#90E0EF;
+}
+
+.fa-bolt-lightning{
+    color: #CED4DA;
+}
+
+.fa-snowflake{
+    color: #90E0EF;
+}
+.fa-cloud-sun{
+    color: #90E0EF;
+}
+
+.fa-cloud-showers-water{
+    color: #90E0EF;
+}
+
+.title{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0px 0px 0px 40px;
+}
+
+.title h4{
+    color: #424343;
+}
+.title i{
+    padding: 17px;
+    margin: 0;
+    color: #90E0EF;
+    font-size: 16px;
+}
