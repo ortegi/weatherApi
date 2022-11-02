@@ -17,7 +17,7 @@ body{
 .weather{
     background-color: #5C9CE5;
     height: 620px;
-    width: 20%;
+    width: 25%;
     padding: 20px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -26,13 +26,19 @@ body{
 .dashboard{
     background-color: #E4F1FF;
     height: 620px;
-    width: 80%;
+    width: 75%;
     padding: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.nameCity{
+    color: white;
+    font-size: 14px;
+    text-align: center;
 }
 
 input#site-search-city, input#site-search-country {
@@ -90,12 +96,35 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
 .nextHours{
     width: 90%;
     background-color: #fff;
-    height: 300px;
+    height: 210px;
     border-radius: 20px;
     box-shadow: -7px 14px 15px -21px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
-    margin: 10px
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
 
 }
+
+.nextDays{
+    width: 90%;
+    background-color: #fff;
+    height: 210px;
+    border-radius: 20px;
+    box-shadow: -7px 14px 15px -21px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+    
+
+}
+
+
+
+
 
 .dashboard h3{
     color: #5F7470;
@@ -105,25 +134,25 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
 .moreDetails{
     display: flex;
     width: 100%;
-    height: 210px;
+    height: 100px;
     justify-content: center;
 }
 
 .more{
-    background-color: #FFF;
+    background-color: transparent;
     border-radius: 20px;
-    width: 250px;
-    height: 120px;
+    width: 110px;
+    height: 82px;
     margin: 10px 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #B8BDB5;
+    color:#FFF;
 }
 
 .more h3{
     padding: 0;
+    color: #FFF;
 }
 
 .searchCity {
@@ -171,11 +200,13 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     font-weight: 300;
 }
 
-.nextHours{
+.inNextDays{
+    margin: 10px 0px ;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
 }
+
 
 .inNextHours{
     margin: 10px 0px ;
@@ -226,17 +257,22 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+    height: 35px;
 }
 
 .title h4{
     color: #424343;
+    padding: 0px;
+
 }
 .title i{
-    padding: 17px;
+    padding: 17px 0px 0px 2px;
     margin: 0;
     color: #90E0EF;
     font-size: 16px;
+   
 }
 
 
@@ -248,16 +284,17 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
 
     .weather{
         width: 100%;
-        height: 300px;
+        height: 472px;
         border-radius: 0px;
         padding: 15px 0px 15px 0px;
         box-sizing: border-box;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .dashboard{
         width: 100%;
+        background-color: #5C9CE5;
     }
 
     body{
@@ -270,28 +307,57 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
         padding: 5px;
         height: 180px;
         overflow: scroll;
+        background-color: transparent;
+        box-shadow: none;
        
+    }
+    .inNextDays h3 {
+        padding: 0px 30px;
+    }
+
+    .nextDays{
+        width: 100%;;
+        justify-content: inherit;
+        padding: 5px;
+        height: 180px;
+        box-shadow: none;
+        background-color: #0000;
+        display: flex;
+        flex-direction: column;
+       
+
     }
 
     .dashboard{
         padding: 5px;
-        height: 1050px;
+        height: 756px;
         border-radius: 0px;
         box-sizing: border-box;
     }
 
+    .dashboard h3{
+        color: #FFF;
+    }
     .inNextHours{
         font-size: 11px;
+        display: flex;
+        margin: 10px 12px;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 0px 10px;
     }
 
     .more {
         display: flex;
         flex-direction: column;
+        height: 60px;
+        margin: 0;
     }
 
     .moreDetails{
         height: 422px;
-        flex-direction: column;
         align-items: center;
     }
     .searchInput{
@@ -317,12 +383,12 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     }
 
     .more h3 {
-        font-size: 2em;
+        font-size: 1em;
         margin: 3px;
     }
 
     .title h4{
-        font-size: 1.2em;
+        font-size: 1em;
 
     }
 
@@ -330,6 +396,15 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
         padding: 18px;
 
     }
-       
+    
+    .inNextDays{
+        display: flex;
+        flex-direction: row;
+        width: 320px;
+        background-color: #ffffff1a;
+        border-radius: 20px;
+        height: 60px;
+
+    }
     
 }

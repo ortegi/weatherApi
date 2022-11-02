@@ -8,8 +8,10 @@ document.getElementById('body').onload= function() {
 let longitud = ''
 let latitud = ''
 let data = ''
+let dataDaily = ''
 let code = ''
 let cityInfo  = '';
+let adress = ''
 
 function getHour(){
     let months = ['Jan', "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept","Oct","Nov", "Dec"]
@@ -43,6 +45,8 @@ async function showPosition(position){
     longitud =  position.coords.longitude; 
     latitud =  position.coords.latitude;
     getWeather(latitud, longitud)
+    getCityName(latitud, longitud)
+    console.log(longitud, latitud)
 }
 
 async function getWeather(lat, lon){
@@ -52,6 +56,8 @@ async function getWeather(lat, lon){
             const jsonResponse = await response.json()
             data = jsonResponse
             console.log(data)
+            getDailyWeather(lat,lon)
+            
             temperature()
             weathercode()
             upComingHours()
@@ -67,6 +73,23 @@ async function getWeather(lat, lon){
         console.log(error)
     }
    
+}
+
+async function getDailyWeather(lat,lon){
+    try {
+        const response = await fetch ( `https://api.open-meteo.com/v1/forecast?timezone=auto&latitude=${lat}&longitude=${lon}&daily=temperature_2m_max&daily=temperature_2m_min&daily=weathercode`)
+        if (response.ok){
+            const jsonResponse = await response.json()
+            dataDaily = jsonResponse
+            console.log(dataDaily)
+            upComingDays()
+           
+
+        }
+    }catch (error){
+        console.log(error)
+    }
+
 }
 
 
@@ -97,13 +120,45 @@ async function getCityCoords(city, country){
             let lat = cityInfo[0]['lat']
             let long = cityInfo[0]['lon']
             getWeather(lat, long)
-
+            document.getElementById('nameCity').innerHTML = `<h3> ${city}</h3>`
         }
 
     }catch (error){
         console.log(error)
     }
 }
+
+async function getCityName(lat, lon){
+    try{
+        const response = await fetch (`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&zoom=10&format=jsonv2`)
+        if (response.ok){
+        const jsonResponse = await response.json()
+        adress = jsonResponse
+        console.log(adress)
+        cityNameDiv()
+        let city_name = adress['name']
+        let country_name = adress['address']['country']
+        document.getElementById('site-search-city').value = city_name;
+        document.getElementById('site-search-country').value = country_name
+        }
+
+    }catch (error){
+        console.log(error)
+
+    }
+    
+
+   
+}
+
+function cityNameDiv(){
+    let city = adress['name']
+    document.getElementById('nameCity').innerHTML = `
+    <h3> ${city}</h3>
+    `
+}
+
+
 
 function temperature(){
     let hour = getHour()
@@ -144,6 +199,8 @@ function upComingHours(){
     }
 
     document.getElementById('nextHours').innerHTML =  createNowDiv(currentHour, currentTemperature, currentWeatherCode)
+    
+    
     for (let i = 0; i< 8; i++){
         
     document.getElementById('nextHours').innerHTML += createNextHoursDivs(nextHours[i], nextTemperatures[i], nextWeatherCodes[i])
@@ -151,6 +208,44 @@ function upComingHours(){
 
 }
 
+function upComingDays(){
+    let nextDaysDates =  dataDaily['daily']['time']
+    let nextDaysNames = []
+    let nextDaysMaxTemperatures = dataDaily['daily']['temperature_2m_max']
+    let nextDaysWeatherCodes = dataDaily['daily']['weathercode']
+    let nextDaysMinTemperatures =  dataDaily['daily']['temperature_2m_min']
+    let weekDays = ['Sun','Mon', 'Tues', "Wed", 'Thurs', 'Fri', 'Sat']
+    for (let i = 0; i < 7; i++){
+        let rawDate = nextDaysDates[i]
+        let year = rawDate.slice(0,4)
+        let month = rawDate.slice(5,7)
+        let day = rawDate.slice(8, 10)
+        let d = new Date(`${year}", "${month}", "${day}"`)
+        let dayName = weekDays[d.getDay()]
+        nextDaysNames.push(dayName)
+    }
+
+    document.getElementById('nextDays').innerHTML = ''
+    for (let i= 0; i < 7; i++){
+    document.getElementById('nextDays').innerHTML += createNextDaysForecast(nextDaysNames[i], nextDaysMaxTemperatures[i], nextDaysMinTemperatures[i], nextDaysWeatherCodes[i] )
+    }
+   
+  
+}
+
+function createNextDaysForecast(day, maxT, minT, codes){
+    
+    return `
+    <div class= 'inNextDays'>
+    <h3> ${day} </h3>
+    <i class = "${code[codes][1]} fa-2x"> </i>
+    <h3> ${Math.floor(maxT)}°C </h3>
+    <h3> ${Math.floor(minT)}°C </h3>
+    </div>
+
+    `
+
+}
 
 function createNowDiv (hour, temperature, codes) {
 
@@ -207,7 +302,7 @@ function clouds(){
     let currentClouds = data.hourly['cloudcover'][currentHour]
     document.getElementById('clouds').innerHTML = `
     <div class = 'title'> 
-    <h4> Cloud cover</h4>
+    <h4> Clouds</h4>
     <i class="fa-solid fa-cloud"></i>
     </div>
     <h3> ${currentClouds}%</h3>
@@ -220,7 +315,7 @@ function rain(){
     let currentRain = data.hourly['precipitation'][currentHour];
     document.getElementById('rain').innerHTML = `
     <div class = 'title'>
-    <h4>Precipitations </h4>
+    <h4>Rain </h4>
     <i class="fa-solid fa-cloud-showers-heavy"></i>
     </div>
     <h3> ${currentRain} mm</h3>
@@ -232,7 +327,7 @@ function wind(){
     let currentWind = data.hourly['windspeed_10m'][currentHour];
     document.getElementById('wind').innerHTML = `
     <div class = 'title'>
-    <h4>Wind Speed</h4>
+    <h4>Wind </h4>
     <i class="fa-solid fa-wind"></i>
     </div>
     <h3> ${currentWind} km/h</h3>
