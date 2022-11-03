@@ -214,7 +214,7 @@ function upComingDays(){
     let nextDaysMaxTemperatures = dataDaily['daily']['temperature_2m_max']
     let nextDaysWeatherCodes = dataDaily['daily']['weathercode']
     let nextDaysMinTemperatures =  dataDaily['daily']['temperature_2m_min']
-    let weekDays = ['Sun','Mon', 'Tues', "Wed", 'Thurs', 'Fri', 'Sat']
+    let weekDays = ['Sun','Mon', 'Tues', "Wed", 'Thu', 'Fri', 'Sat']
     for (let i = 0; i < 7; i++){
         let rawDate = nextDaysDates[i]
         let year = rawDate.slice(0,4)

@@ -148,6 +148,7 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     flex-direction: column;
     align-items: center;
     color:#FFF;
+    
 }
 
 .more h3{
@@ -263,7 +264,7 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
 }
 
 .title h4{
-    color: #424343;
+    color: #fff;
     padding: 0px;
 
 }
@@ -305,7 +306,7 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
         width: 90%;;
         justify-content: inherit;
         padding: 5px;
-        height: 180px;
+        height: 158px;
         overflow: scroll;
         background-color: transparent;
         box-shadow: none;
@@ -352,8 +353,9 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     .more {
         display: flex;
         flex-direction: column;
-        height: 60px;
-        margin: 0;
+        height: 68px;
+        margin: 2px 4px;
+        background-color: #ffffff1a;
     }
 
     .moreDetails{
@@ -369,9 +371,6 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
         margin-left: 81px;
     }
 
-    .info {
-        display: none;
-    }
 
     div#hour, div#currentDay {
         padding: 0px 10px;
@@ -393,7 +392,7 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
     }
 
     .title i {
-        padding: 18px;
+        padding: 17px 0px 0px 4px;
 
     }
     
@@ -405,6 +404,15 @@ input#site-search-city::placeholder,input#site-search-country::placeholder{
         border-radius: 20px;
         height: 60px;
 
+    }
+
+    .inNextDays h3 {
+        width: 80px;
+    }
+
+    .info h3 {
+        margin: 0;
+        padding: 0;
     }
     
 }
